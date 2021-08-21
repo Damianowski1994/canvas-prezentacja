@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Canvas tutorial</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/custom.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section class="section__wrapper hello-page" data-background-color="#fff">
+				<div id="wrapper">
+					<h2 class="transparent-text">
+						CANVAS
+					</h2>
+					<p>
+						Make beautiful things
+					</p>
+				</div>
+			</section>
+			<section class="section__wrapper about-canvas">
+				<h2>
+					Co to jest CANVAS ?
+				</h2>
+				<p>
+					Element języka HTML wprowadzony w HTML 5 pozwalający na dynamiczne, skryptowe renderowanie kształtów i obrazów
+					bitmapowych. Dzięki wprowadzeniu obiektu canvas możliwe stało się tworzenie dynamicznych dwu- i
+					trójwymiarowych animacji
+					czy gier działających w przeglądarkach bez dodatkowych wtyczek.
+				</p>
+			</section>
+			<section class="section__wrapper usage" data-background-color="#512D6D">
+				<section class="font-light">
+					<h2>Zastosowania</h2>
+				</section>
+				<section class="font-light" data-background-color="#986D8E">
+					Wykresy
+				</section>
+				<section data-background-color="#986D8E">
+					<div id="chart-wrapper">
+						<aside class="chart vert">
+							<canvas id="canPie" width="200" height="200" data-values='40, 30, 20, 60, 10, 50'>
+								This browser does not support HTML5 Canvas.
+							</canvas>
+						</aside>
+						<aside class="chart">
+							<canvas id="canPeak" width="200" height="200" data-values='40, 30, 20, 60, 10, 50'>
+								This browser does not support HTML5 Canvas.
+							</canvas>
+						</aside>
+						<aside class="chart">
+							<canvas id="canBar" width="200" height="200" data-values='40, 30, 20, 60, 10, 50'>
+								This browser does not support HTML5 Canvas.
+							</canvas>
+						</aside>
+					</div>
+				</section>
+				<section data-background-iframe="https://codepen.io/tmrDevelops/full/ygBgVL" data-background-interactive>
+					<h1>Animacje</h1>
+				</section>
+				<section>gry</section>
+				<section data-background-iframe="https://codepen.io/FRADAR/full/NWjXyJe" data-background-interactive>
+				</section>
+			</section>
+			<section class="section__wrapper how-it-works" data-background-color="#3EB595">
+				<section>
+					...no ok ale jak to działa ?
+				</section>
+				<section>
+					Tworzymy canvasa
+				</section>
+				<section class="section__wrapper basic-code" data-markdown>
+					<textarea data-template>
+							```html
+							<canvas width="400" height="300" id="canvas-id">
+							</canvas>
+							```
+						</textarea>
+				</section>
+				<section>
+					"Łapiemy" canvasa w js
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						```js [1-2|4-13|15-16|18|19-27]
+						var canvas = document.getElementById('canvas-id');
+						var ctx = canvas.getContext('2d');
+
+						function drawStuff () {
+							// clears old drawings (otherwise you get an afterimage)
+							ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+							// redraw all the shapes in the scene
+							ctx.shadowBlur = 50;
+							ctx.shadowColor = 'black';
+							ctx.fillStyle = 'indigo';
+							ctx.fillRect(x, y, 50, 50);
+						}
+
+						var x = 80;
+						var y = -50;
+
+						drawStuff();
+						setInterval(function () {
+							y += 1.5;
+							drawStuff();
+
+							// move the box back to the top if it falls offscreen
+							if (y > canvas.height + 50) {
+								y = -50;
+							}
+						}, 1000 / 60);
+						// 60 frames a second
+						```
+					</textarea>
+				</section>
+				<section>
+					<canvas id="square" width="500" height="400"></canvas>
+				</section>
+			</section>
+			<section class="section__wrapper" data-background-color="#003F63">
+				<section>Troche praktyki</section>
+				<section data-background-iframe="https://codepen.io/DamianDeSiGnEr/full/RwgbWzr"></section>
+			</section>
+			<section data-background-color="#002366">
+				Po co sobie utrudniać ?!
+				<section>
+					<ul>
+						<li class="fragment fade-up">
+							<a href="https://p5js.org/">
+								<span>p5 js</span>
+							</a>
+						</li>
+						<li class="fragment fade-up">
+							<a href="http://paperjs.org/">
+								<span>paper js</span>
+							</a>
+						</li>
+						<li class="fragment fade-up">
+							<a href="https://www.chartjs.org/">
+								<span>chart js</span>
+							</a>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li class="fragment fade-up">
+							<a href="https://www.yoyogames.com/en/gamemaker">
+								<span>
+									YOYOgames
+								</span>
+							</a>
+						</li>
+						<li class="fragment fade-up">
+							<a href="https://editor.construct.net/">
+								<span>
+									Construct
+								</span>
+							</a>
+						</li>
+						<li class="fragment fade-up">
+							<a href="https://phaser.io/">
+								<span>
+									Phaser
+								</span>
+							</a>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section data-background-color="#001E6C">
+				Troche inspiracji
+
+				<section data-background-iframe="https://codepen.io/alexzaworski/full/mEkvAG" data-background-interactive>
+				</section>
+				<section data-background-iframe="https://codepen.io/towc/full/mJzOWJ" data-background-interactive></section>
+				<section data-background-iframe="https://codepen.io/run-time/full/JbEFn" data-background-interactive></section>
+				<section data-background-iframe="https://codepen.io/waisbren89/full/gwvVpP" data-background-interactive>
+				</section>
+				<section data-background-iframe="https://codepen.io/at80/full/tqdmv" data-background-interactive></section>
+				<section data-background-iframe="https://codepen.io/akm2/full/rHIsa" data-background-interactive></section>
+				<section data-background-iframe="https://codepen.io/kennethcachia/full/Fhvie" data-background-interactive>
+				</section>
+				<section data-background-iframe="https://codepen.io/MarcoGuglielmelli/full/lLCxy" data-background-interactive>
+				</section>
+				<section data-background-iframe="https://codepen.io/tutsplus/full/eYvwQev" data-background-interactive>
+				</section>
+			</section>
+			<section data-background-color="#e2aa01">
+				<div class="firework-1"></div>
+				<div class="firework-2"></div>
+				<div class="firework-3"></div>
+				<div class="firework-4"></div>
+				<div class="firework-5"></div>
+				<div class="firework-6"></div>
+				<div class="firework-7"></div>
+				<div class="firework-8"></div>
+				<div class="firework-9"></div>
+				<div class="firework-10"></div>
+				<div class="firework-11"></div>
+				<div class="firework-12"></div>
+				<div class="firework-13"></div>
+				<div class="firework-14"></div>
+				<div class="firework-15"></div>
+
+				<div class="title">Dziękuje za uwagę</div>
+
+				<audio data-autoplay>
+					<source src="/sounds/mixkit-small-group-cheer-and-applause-518.wav" type="audio/wav">
+				</audio>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+		});
+
+		Reveal.on('make-it-pop', () => {
+			console.log('✨');
+		});
+
+		Reveal.on("slidetransitionend", event => {
+			console.log(event.currentSlide);
+		})
+	</script>
+	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/131045/doyleSpirals.js"></script>
+	<!-- <script src="plugin/canvas/hello.js"></script> -->
+	<script src="plugin/square/square.js"></script>
+	<script src="plugin/canvas/sample-chart.js"></script>
+	<!-- <script src="plugin/canvas/fireworks.js"></script> -->
+</body>
+
+</html>
